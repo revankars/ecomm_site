@@ -1,4 +1,11 @@
-document.cookie = "orderId="+0 +",counter="+0
+function getRandomNumbers() {
+    const typedArray = new Uint8Array(10);
+    const randomValues = window.crypto.getRandomValues(typedArray);
+    return randomValues.join('');
+}
+
+document.cookie = "orderId="+getRandomNumbers() +",counter="+0
+
 
 let httpRequest = new XMLHttpRequest(),
 jsonArray,

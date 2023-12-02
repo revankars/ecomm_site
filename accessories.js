@@ -43,7 +43,7 @@ function dynamicClothingSection(ob) {
 }
 
 //  TO SHOW THE RENDERED CODE IN CONSOLE
-// console.log(dynamicClothingSection());
+console.log(dynamicClothingSection());
 
 // console.log(boxDiv)
 
@@ -59,19 +59,16 @@ let httpRequest = new XMLHttpRequest();
 httpRequest.onreadystatechange = function () {
   if (this.readyState === 4) {
     if (this.status == 200) {
-      console.log('call successful');
+      console.log('accessory call successful');
       contentTitle = JSON.parse(this.responseText);
       if (document.cookie.indexOf(',counter=') >= 0) {
         var counter = document.cookie.split(',')[1].split('=')[1];
         document.getElementById('badge').innerHTML = counter;
       }
       for (let i = 0; i < contentTitle.length; i++) {
-        if (contentTitle[i].isAccessory) {
+        if (contentTitle[i].isAccessory == true) {
           console.log(contentTitle[i]);
           containerAccessories.appendChild(dynamicClothingSection(contentTitle[i]));
-        } else {
-          console.log(contentTitle[i]);
-          containerClothing.appendChild(dynamicClothingSection(contentTitle[i]));
         }
       }
     } else {
